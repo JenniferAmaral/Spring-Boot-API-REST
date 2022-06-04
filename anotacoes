@@ -1,0 +1,33 @@
+Sobre a classe DTO - Data Transfer Object
+
+Ela vai ajudar a não ter que retornar dados específicos das classe que pedimos para retornar. Já que o jacker que transforma os dados em JSON retorna todos os dados do objeto
+
+Sobre API REST - Representational State Transfer (Transferência do Estado Representacional
+
+- Modelo de arquitetura para sistemas distribuídos;
+- Integração entre sistemas web;
+- Recursos(o que é gerenciado)-> no caso da Alura são os tópicos, Alunos, Cursos...;
+- URI - é o identificador único de cada recurso;
+- Para manipulação de recursos podemos usar os métodos do HTTP(GET,PUT,DELETE,POST...);
+- Representação dos dados;
+- Stateless - não guarda dados de sessões de usuários;
+
+* Para não ter que utilizar um classe DAO e fazer diversas operações repetitivas utilizamos uma padrão criado pelo spring boot que é o repository, que vai ser uma interface e não precisa de esteriótipos como as classe normais. Vamos criar um interface que herda vários métodos que serão úteis.
+
+*Injeção de dependencias?
+
+Sobre JPA:
+- Todas as classe em que ela está sendo utilizada precisam ter um construtor default, sem parametros
+
+- o JPA consegue gerar uma query de consulta ao bd baseado no nome do método na interface repository
+
+Para utilizar o JPA no projeto, devemos incluir o módulo Spring Boot Data JPA, que utiliza o Hibernate, por padrão, como sua implementação;
+Para configurar o banco de dados da aplicação, devemos adicionar as propriedades do datasource e do JPA no arquivo src/main/resources/application.properties;
+Para acessar a página de gerenciamento do banco de dados H2, devemos configurar o console do H2 com propriedades no arquivo src/main/resources/application.properties;
+Para mapear as classes de domínio da aplicação como entidade JPA, devemos utilizar as anotações @Entity, @Id, @GeneratedValue, @ManyToOne, @OneToMany e @Enumerated;
+Para que o Spring Boot popule automaticamente o banco de dados da aplicação, devemos criar o arquivo src/main/resources/data.sql;
+Para criar um Repository, devemos criar uma interface, que herda da interface JPARepository do Spring Data JPA;
+Para criar consultas que filtram por atributos da entidade, devemos seguir o padrão de nomenclatura de métodos do Spring, como por exemplo findByCursoNome;
+Para criar manualmente a consulta com JPQL, devemos utilizar a anotação @Query;
+
+
